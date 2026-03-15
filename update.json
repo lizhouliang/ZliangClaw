@@ -1,0 +1,15 @@
+{
+  "version": "0.0.2",
+  "notes": "修复了部分问题，增加了毛玻璃效果更新弹窗。",
+  "pub_date": "2026-03-15T10:00:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "签名内容...",
+      "url": "https://gitee.com/lizhouliang/zliang-claw/releases/download/v0.0.2/ZliangClaw_0.0.2_x64_en-US.msi.zip"
+    },
+    "darwin-x86_64": {
+      "signature": "签名内容...",
+      "url": "https://gitee.com/your-name/your-repo/releases/download/v0.1.0/ZliangClaw.app.tar.gz"
+    }
+  }
+}
