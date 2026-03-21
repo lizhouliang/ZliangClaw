@@ -103,9 +103,33 @@ const updateDate = () => {
         const year = now.getFullYear();
         const month = (now.getMonth() + 1).toString().padStart(2, '0');
         const day = now.getDate().toString().padStart(2, '0');
-        dateEl.textContent = `最新稳定版: v1.0.2 | 更新日期: ${year}.${month}.${day}`;
+        dateEl.textContent = `最新稳定版: v.1.0.1 | 更新日期: ${year}.${month}.${day}`;
     }
 };
 updateDate();
 
 // Update scroll reveal for new sections (Integrated into main observer list above)
+
+// Simple download feedback for other platforms
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle other download links (macOS, Linux) - show coming soon
+    const otherDownloadLinks = document.querySelectorAll('.os-option a[href="#"]');
+    otherDownloadLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Show coming soon message
+            const originalText = this.innerHTML;
+            this.innerHTML = '即将推出';
+            this.style.background = '#64748b';
+            this.style.color = 'white';
+            
+            // Reset after 2 seconds
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.style.background = '';
+                this.style.color = '';
+            }, 2000);
+        });
+    });
+});

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .btn { 
+            display: inline-block; 
+            padding: 10px 20px; 
+            background: #ea580c; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            margin: 10px;
+        }
+        .btn:hover { background: #c2410c; }
+    </style>
+</head>
+<body>
+    <h1>下载测试页面</h1>
+    
+    <h2>方法1: 直接链接</h2>
+    <a href="https://gh-proxy.org/https://github.com/lizhouliang/zliangclawUpdate/releases/latest/download/ZliangClaw_1.0.1_x64-setup.exe" class="btn">直接下载 .exe</a>
+    
+    <h2>方法2: 新窗口打开</h2>
+    <a href="https://gh-proxy.org/https://github.com/lizhouliang/zliangclawUpdate/releases/latest/download/ZliangClaw_1.0.1_x64-setup.exe" class="btn" target="_blank">新窗口下载</a>
+    
+    <h2>方法3: 下载属性</h2>
+    <a href="https://gh-proxy.org/https://github.com/lizhouliang/zliangclawUpdate/releases/latest/download/ZliangClaw_1.0.1_x64-setup.exe" class="btn" download>强制下载</a>
+    
+    <h2>方法4: JavaScript触发</h2>
+    <a href="#" class="btn" onclick="window.location.href='https://gh-proxy.org/https://github.com/lizhouliang/zliangclawUpdate/releases/latest/download/ZliangClaw_1.0.1_x64-setup.exe'">JS下载</a>
+    
+    <script>
+        console.log('页面加载完成');
+    </script>
+</body>
+</html>

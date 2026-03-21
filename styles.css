@@ -737,6 +737,7 @@ ul {
     inset: 0;
     background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
     opacity: 0.05;
+    pointer-events: none;
 }
 
 .download-card .section-title, 
@@ -783,6 +784,8 @@ ul {
 .btn-outline {
     border: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
+    position: relative;
+    z-index: 10;
 }
 
 .btn-outline:hover {
