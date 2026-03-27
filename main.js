@@ -103,7 +103,7 @@ const updateDate = () => {
         const year = now.getFullYear();
         const month = (now.getMonth() + 1).toString().padStart(2, '0');
         const day = now.getDate().toString().padStart(2, '0');
-        dateEl.textContent = `最新稳定版: v.1.0.1 | 更新日期: ${year}.${month}.${day}`;
+        dateEl.textContent = `最新稳定版: v.1.0.2 | 更新日期: ${year}.${month}.${day}`;
     }
 };
 updateDate();
