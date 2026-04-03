@@ -110,8 +110,84 @@ updateDate();
 
 // Update scroll reveal for new sections (Integrated into main observer list above)
 
+// Download Helper for GitHub access in China
+class DownloadHelper {
+    constructor() {
+        this.mirrors = [
+            'https://ghproxy.com/',
+            'https://hub.fastgit.xyz/',
+            'https://github.91chi.fun/'
+        ];
+    }
+
+    generateMirrorUrls(originalUrl) {
+        const urls = [originalUrl];
+        this.mirrors.forEach(mirror => {
+            urls.push(`${mirror}${originalUrl}`);
+        });
+        return urls;
+    }
+
+    async getBestDownloadUrl(originalUrl) {
+        const urls = this.generateMirrorUrls(originalUrl);
+        
+        for (const url of urls) {
+            try {
+                const response = await fetch(url, { method: 'HEAD' });
+                if (response.ok) {
+                    return url;
+                }
+            } catch (error) {
+                continue;
+            }
+        }
+        return originalUrl; // 返回原始地址作为备选
+    }
+}
+
 // Simple download feedback for other platforms
 document.addEventListener('DOMContentLoaded', function() {
+    const downloadHelper = new DownloadHelper();
+    
+    // Handle Windows download button
+    const windowsDownloadBtn = document.querySelector('.os-option.windows a');
+    if (windowsDownloadBtn) {
+        windowsDownloadBtn.addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const originalUrl = 'https://github.com/lizhouliang/zliangclawUpdate/releases/download/ZliangClaw1.0.2/ZliangClaw_1.0.2_x64-setup.exe';
+            
+            // 显示加载状态
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> 获取最佳下载地址...';
+            this.style.background = '#f59e0b';
+            lucide.createIcons();
+            
+            try {
+                const bestUrl = await downloadHelper.getBestDownloadUrl(originalUrl);
+                
+                // 创建临时链接进行下载
+                const link = document.createElement('a');
+                link.href = bestUrl;
+                link.download = 'ZliangClaw_1.0.2_x64-setup.exe';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // 恢复按钮状态
+                this.innerHTML = originalText;
+                this.style.background = '';
+            } catch (error) {
+                this.innerHTML = '下载失败';
+                this.style.background = '#ef4444';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.background = '';
+                }, 2000);
+            }
+        });
+    }
+    
     // Handle other download links (macOS, Linux) - show coming soon
     const otherDownloadLinks = document.querySelectorAll('.os-option a[href="#"]');
     otherDownloadLinks.forEach(link => {
