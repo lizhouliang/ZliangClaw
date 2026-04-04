@@ -105,20 +105,20 @@ ul {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    font-weight: 700;
     color: var(--text-main);
+    text-decoration: none;
 }
 
-.logo-icon {
-    background: var(--gradient);
+.logo svg {
     width: 32px;
     height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    color: white;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover svg {
+    transform: scale(1.05);
 }
 
 .logo-accent {
